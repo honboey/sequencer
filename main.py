@@ -1,6 +1,15 @@
 from pyo import *
 
-s = Server().boot()
-s.start()
-a = Sine(mul=0.01).out()
+# Creates and boots the server.
+# The user should send the "start" command from the GUI.
+s = Server(nchnls=1).boot()
+# Drops the gain by 20 dB.
+s.amp = 0.1
+
+# Creates a sine wave player.
+# The out() method starts the processing
+# and sends the signal to the output.
+a = Sine().out()
+
+# Opens the server graphical interface.
 s.gui(locals())
